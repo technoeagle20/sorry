@@ -1,67 +1,100 @@
+/* Reset and Base Styling */
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #a18cd1, #fbc2eb);
   font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background: linear-gradient(to bottom right, #6a0dad, #1e1a4f);
+  overflow: hidden;
+  color: white;
 }
 
 .book {
   position: relative;
-  width: 320px;
-  height: 420px;
-  perspective: 1200px;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1500px;
 }
 
 .page {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  width: 90vw;
+  height: 90vh;
+  margin: 5vh auto;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transform-origin: left;
   transition: transform 1s ease;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
+  overflow: auto;
+  padding: 20px;
   box-sizing: border-box;
-  z-index: 1;
+  z-index: 10;
 }
 
+/* Flip animation */
+.page.flipped {
+  transform: rotateY(-180deg);
+  z-index: -1;
+}
+
+/* Page content styling */
 .page img {
-  max-width: 70%;
-  border-radius: 12px;
-  margin-bottom: 10px;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-.page p, .music, .message {
+.page p {
+  margin-top: 15px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.page h2 {
+  margin-top: 0;
+  color: #d4006c;
+}
+
+/* Music Section */
+.music {
+  margin-top: 15px;
   text-align: center;
-  font-size: 12px;
-  color: #333;
+}
+
+.music p {
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .music h3 {
-  margin: 4px 0;
+  margin: 5px 0;
   color: #6a0dad;
 }
 
-.music .controls {
-  font-size: 24px;
-  margin-top: 10px;
+.controls {
+  font-size: 22px;
+  letter-spacing: 20px;
+  color: #444;
 }
 
-.message h2 {
-  color: #d4145a;
-  margin-bottom: 8px;
-}
+/* Scroll on smaller screens */
+@media (max-width: 768px) {
+  .page {
+    width: 95vw;
+    height: 90vh;
+    font-size: 16px;
+  }
 
-.flipped {
-  transform: rotateY(-180deg);
+  .page img {
+    max-height: 200px;
+  }
+
+  .controls {
+    font-size: 18px;
+    letter-spacing: 10px;
+  }
 }
